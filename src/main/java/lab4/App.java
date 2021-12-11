@@ -47,11 +47,11 @@ public class App {
 
     private Route createRoute(ActorRef routerActor) {
         Route router = route(
-                path("semaphore", () ->
+                path("result", () ->
                         route(
                                 get( () -> {
-                                    Future<Object> result = Patterns.ask(testPackageActor,
-                                            SemaphoreActor.makeRequest(), 5000);
+                                    Future<Object> result = Patterns.ask(GetTestResults,
+                                            StorageActor.makeRequest(), 5000);
                                     return completeOKWithFuture(result, Jackson.marshaller());
                                 }))),
                 path("test", () ->
@@ -60,14 +60,6 @@ public class App {
                                         entity(Jackson.unmarshaller(TestPackageMsg.class), msg -> {
                                             testPackageActor.tell(msg, ActorRef.noSender());
                                             return complete("Test started!");
-                                        })))),
-                path("put", () ->
-                        get(() ->
-                                parameter("key", (key) ->
-                                        parameter("value", (value) ->
-                                        {
-                                            storeActor.tell(new StoreActor.StoreMessage(key, value), ActorRef.noSender());
-                                            return complete("value saved to store ! key=" + key + " value=" + value);
                                         })))));
         return router;
     }
