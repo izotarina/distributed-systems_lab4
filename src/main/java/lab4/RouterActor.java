@@ -28,7 +28,7 @@ public class RouterActor extends AbstractActor {
                         pool.tell(new TestExecuteRequest(m.getPackageId(), m.getJsScript(), m.getFunctionName(), test), self());
                     });
                 })
-                .match(GetTestResults.class, req -> sender().tell(
+                .match(GetTestResults.class, req -> storage.tell(
                         new StoreMessage(req.getKey(), store.get(req.getKey())), self())
                 ).build();
     }
