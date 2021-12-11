@@ -3,9 +3,9 @@ package lab4;
 public class Test {
     private final String testName;
     private final String expectedResult;
-    private final Object[] params;
+    private final int[] params;
 
-    public Test(String testName, String expectedResult, Object[] params) {
+    public Test(String testName, String expectedResult, int[] params) {
         this.testName = testName;
         this.expectedResult = expectedResult;
         this.params = params;
@@ -19,7 +19,7 @@ public class Test {
         return expectedResult;
     }
 
-    public Object[] getParams() {
+    public int[] getParams() {
         return params;
     }
 }
