@@ -3,13 +3,18 @@ package lab4;
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
+import akka.routing.RoundRobinPool;
 
 public class RouterActor extends AbstractActor {
     private final ActorRef storage;
     private final ActorRef pool;
 
     public RouterActor() {
-        storage = 
+        pool = getContext().actorOf(
+                new RoundRobinPool(5)
+                        .withSupervisorStrategy(strategy)
+                        .props(Props.create(TestPerformerActor.class, logResultsActor)),
+                "routerForTests");
     }
 
     @Override
