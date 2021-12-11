@@ -28,8 +28,8 @@ public class StorageActor extends AbstractActor {
 
                     testResults.add(m.getTestResult());
                 })
-                .match(GetMessage.class, req -> sender().tell(
-                        new StoreMessage(req.getKey(), store.get(req.getKey())), self())
+                .match(GetTestResults.class, req -> sender().tell(
+                        new StoreMessage(req.getPackageId(), store.get(req.getPackageId())), self())
                 ).build();
     }
 }

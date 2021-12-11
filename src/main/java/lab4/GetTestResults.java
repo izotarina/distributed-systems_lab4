@@ -6,4 +6,8 @@ public class GetTestResults {
     public GetTestResults(String packageId) {
         this.packageId = packageId;
     }
+
+    public String getPackageId() {
+        return packageId;
+    }
 }
