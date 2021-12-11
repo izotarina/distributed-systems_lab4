@@ -12,6 +12,10 @@ public class TestExecutorActor extends AbstractActor {
     private final static String ENGINE_NAME = "nashborn";
     private final ActorRef storageActor;
 
+    public TestExecutorActor(ActorRef storageActor) {
+        this.storageActor = storageActor;
+    }
+
     @Override
     public AbstractActor.Receive createReceive() {
         return ReceiveBuilder.create()
@@ -24,9 +28,8 @@ public class TestExecutorActor extends AbstractActor {
 
                     TestResult testResult = new TestResult(m.getTest(), result);
                     StoreTestResult storeTestResult = new StoreTestResult(m.getPackageId(), testResult);
-                })
-                .match(GetMessage.class, req -> sender().tell(
-                        new StoreMessage(req.getKey(), store.get(req.getKey())), self())
-                ).build();
+
+                    storageActor.tell(storeTestResult, self());
+                }).build();
     }
 }
