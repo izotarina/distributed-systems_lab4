@@ -6,6 +6,8 @@ import akka.actor.Props;
 import akka.japi.pf.ReceiveBuilder;
 import akka.routing.RoundRobinPool;
 
+import java.util.List;
+
 public class RouterActor extends AbstractActor {
     private final ActorRef storage;
     private final ActorRef pool;
@@ -21,7 +23,10 @@ public class RouterActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(InputDataTests.class, m -> {
-                    
+                    List<Test> tests  = m.getTests();
+                    tests.forEach(test -> {
+                        pool.tell(new TestExecuteRequest());
+                    });
                     store.put(m.getKey(), m.getValue());
                     System.out.println("receive message! "+m.toString());
                 })
