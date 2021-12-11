@@ -19,7 +19,7 @@ public class TestExecutorActor extends AbstractActor {
     @Override
     public AbstractActor.Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(TestRequest.class, m -> {
+                .match(TestExecuteRequest.class, m -> {
                     ScriptEngine engine = new
                             ScriptEngineManager().getEngineByName(ENGINE_NAME);
                     engine.eval(m.getJsScript());
