@@ -52,7 +52,7 @@ public class App {
                                 parameter("packageId", (key) ->
                                         parameter("value", (value) ->
                                         {
-                                            storeActor.tell(new StoreActor.StoreMessage(key, value), ActorRef.noSender());
+                                            routerActor.tell(new StoreActor.StoreMessage(key, value), ActorRef.noSender());
                                             return complete("value saved to store ! key=" + key + " value=" + value);
                                         })))),
                 path("test", () ->
