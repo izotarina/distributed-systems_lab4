@@ -51,7 +51,7 @@ public class App {
                         get(() ->
                                 parameter("packageId", (packageId) ->
                                     {
-                                        routerActor.tell(new GetTestResults.StoreMessage(key, value), ActorRef.noSender());
+                                        routerActor.tell(new GetTestResults(packageId), ActorRef.noSender());
                                         return complete("value saved to store ! key=" + key + " value=" + value);
                                     }))),
                 path("test", () ->
