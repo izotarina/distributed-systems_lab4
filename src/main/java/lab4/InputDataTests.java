@@ -1,5 +1,8 @@
 package lab4;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class InputDataTests {
@@ -8,11 +11,16 @@ public class InputDataTests {
     private final String functionName;
     private final List<Test> tests;
 
-    public InputDataTests(String packageId, String jsScript, String functionName, Test test) {
+    @JsonCreator
+    public InputDataTests(@JsonProperty String packageId,
+                          @JsonProperty String jsScript,
+                          @JsonProperty String functionName,
+                          @JsonProperty List<Test> tests)
+    {
         this.packageId = packageId;
         this.jsScript = jsScript;
         this.functionName = functionName;
-        this.test = test;
+        this.tests = tests;
     }
 
     public String getPackageId() {
