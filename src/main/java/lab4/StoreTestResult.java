@@ -1,8 +1,8 @@
 package lab4;
 
 public class StoreTestResult {
-    private String packageId;
-    private TestResult testResult;
+    private final String packageId;
+    private final TestResult testResult;
 
     public StoreTestResult(String packageId, TestResult testResult) {
         this.packageId = packageId;

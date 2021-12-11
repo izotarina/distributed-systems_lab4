@@ -1,9 +1,9 @@
 package lab4;
 
 public class Test {
-    private String testName;
-    private String expectedResult;
-    private int[] params;
+    private final String testName;
+    private final String expectedResult;
+    private final int[] params;
 
     public Test(String testName, String expectedResult, int[] params) {
         this.testName = testName;
