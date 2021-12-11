@@ -20,7 +20,7 @@ public class TestExecutorActor extends AbstractActor {
                     Invocable invocable = (Invocable) engine;
                     String result = invocable.invokeFunction(m.getFunctionName(), m.getTest().getParams()).toString();
 
-                    
+
                 })
                 .match(GetMessage.class, req -> sender().tell(
                         new StoreMessage(req.getKey(), store.get(req.getKey())), self())

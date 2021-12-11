@@ -7,7 +7,7 @@ public class SendTestResults {
     private final List<TestResult> testResults;
 
     public SendTestResults(String packageId, List<TestResult> testResults) {
-        this.packageId = packageId
+        this.packageId = packageId;
         this.testResults = testResults;
     }
 
