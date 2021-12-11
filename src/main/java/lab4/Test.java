@@ -19,5 +19,7 @@ public class Test {
         return expectedResult;
     }
 
-    p
+    public int[] getParams() {
+        return params;
+    }
 }
