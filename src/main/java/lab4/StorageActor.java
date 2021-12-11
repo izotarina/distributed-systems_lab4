@@ -13,9 +13,17 @@ public class StorageActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(TestResult.class, m -> {
-                    store.put(m.get(), m.getValue());
-                    System.out.println("receive message! "+m.toString());
+                .match(StoreTestResult.class, m -> {
+                    String packageId = m.getPackageId();
+                    List<TestResult> testResults;
+
+                    if (store.containsKey(packageId)) {
+                        testResults = store.get(packageId);
+                    } else {
+                        testResults = new List<TestResult>() {
+                        }
+                    }
+                    store.put(m.getPackageId(), m.getTestResult());
                 })
                 .match(GetMessage.class, req -> sender().tell(
                         new StoreMessage(req.getKey(), store.get(req.getKey())), self())
