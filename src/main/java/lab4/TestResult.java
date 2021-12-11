@@ -1,8 +1,8 @@
 package lab4;
 
 public class TestResult {
-    private Test test;
-    private String result;
+    private final Test test;
+    private final String result;
 
     public TestResult(Test test, String result) {
         this.test = test;
