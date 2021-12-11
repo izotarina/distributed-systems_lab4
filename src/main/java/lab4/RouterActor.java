@@ -2,6 +2,7 @@ package lab4;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
+import akka.actor.Props;
 import akka.japi.pf.ReceiveBuilder;
 import akka.routing.RoundRobinPool;
 
@@ -11,9 +12,7 @@ public class RouterActor extends AbstractActor {
 
     public RouterActor() {
         pool = getContext().actorOf(
-                new RoundRobinPool(5)
-                        .withSupervisorStrategy(strategy)
-                        .props(Props.create(TestPerformerActor.class, logResultsActor)),
+                new RoundRobinPool(5).props(Props.create(TestPerformerActor.class, logResultsActor)),
                 "routerForTests");
     }
 
