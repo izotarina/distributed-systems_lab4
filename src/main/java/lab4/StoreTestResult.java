@@ -8,4 +8,12 @@ public class StoreTestResult {
         this.packageId = packageId;
         this.testResult = testResult;
     }
+
+    public String getPackageId() {
+        return packageId;
+    }
+
+    public TestResult getTestResult() {
+        return testResult;
+    }
 }
