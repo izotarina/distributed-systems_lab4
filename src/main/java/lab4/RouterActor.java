@@ -29,7 +29,7 @@ public class RouterActor extends AbstractActor {
                     });
                 })
                 .match(GetTestResults.class, req -> storage.tell(
-                        req, storage
+                        req, sender()
                 ).build();
     }
 }
