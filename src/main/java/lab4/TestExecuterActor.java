@@ -1,4 +1,6 @@
 package lab4;
 
-public class TestExecuterActor {
+import akka.actor.ActorSystem;
+
+public class TestExecuterActor extends ActorSystem {
 }
