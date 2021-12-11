@@ -49,7 +49,7 @@ public class App {
         Route router = route(
                 path("result", () ->
                         get(() ->
-                                parameter("key", (key) ->
+                                parameter("packageId", (key) ->
                                         parameter("value", (value) ->
                                         {
                                             storeActor.tell(new StoreActor.StoreMessage(key, value), ActorRef.noSender());
