@@ -25,7 +25,7 @@ public class RouterActor extends AbstractActor {
                 .match(InputDataTests.class, m -> {
                     List<Test> tests  = m.getTests();
                     tests.forEach(test -> {
-                        pool.tell(new TestExecuteRequest());
+                        pool.tell(new TestExecuteRequest(m.getPackageId(), m.getJsScript(), m.getFunctionName(), test), self());
                     });
                     store.put(m.getKey(), m.getValue());
                     System.out.println("receive message! "+m.toString());
