@@ -29,7 +29,7 @@ public class StorageActor extends AbstractActor {
                     testResults.add(m.getTestResult());
                 })
                 .match(GetTestResults.class, req -> sender().tell(
-                        new StoreMessage(req.getPackageId(), store.get(req.getPackageId())), self())
+                        new SendTestResults(req.getPackageId(), store.get(req.getPackageId())), self())
                 ).build();
     }
 }
