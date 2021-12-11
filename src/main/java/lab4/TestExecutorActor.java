@@ -3,7 +3,7 @@ package lab4;
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 
-public class TestExecuterActor extends AbstractActor {
+public class TestExecutorActor extends AbstractActor {
     @Override
     public AbstractActor.Receive createReceive() {
         return ReceiveBuilder.create()
