@@ -20,7 +20,8 @@ public class RouterActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(StoreMessage.class, m -> {
+                .match(InputDataTests.class, m -> {
+                    
                     store.put(m.getKey(), m.getValue());
                     System.out.println("receive message! "+m.toString());
                 })
