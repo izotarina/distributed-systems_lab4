@@ -52,7 +52,7 @@ public class App {
                                 parameter("packageId", (packageId) ->
                                     {
                                         routerActor.tell(new GetTestResults(packageId), ActorRef.noSender());
-                                        return complete("value saved to store ! key=" + key + " value=" + value);
+                                        return completeOKWithFuture(result, Jackson.marshaller());
                                     }))),
                 path("test", () ->
                         route(
