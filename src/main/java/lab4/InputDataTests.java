@@ -6,7 +6,7 @@ public class InputDataTests {
     private final String functionName;
     private final Test test;
 
-    public TestExecuteRequest(String packageId, String jsScript, String functionName, Test test) {
+    public InputDataTests(String packageId, String jsScript, String functionName, Test test) {
         this.packageId = packageId;
         this.jsScript = jsScript;
         this.functionName = functionName;
