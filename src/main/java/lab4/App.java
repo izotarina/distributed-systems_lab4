@@ -51,7 +51,7 @@ public class App {
                         get(() ->
                                 parameter("packageId", (packageId) ->
                                     {
-                                        Future<Object> result = Patterns.ask(routerActor, new GetTestResults(packageId), ActorRef.noSender())
+                                        Future<Object> result = Patterns.ask(routerActor, new GetTestResults(packageId), 5000);
                                         routerActor.tell(new GetTestResults(packageId), ActorRef.noSender());
                                         return completeOKWithFuture(result, Jackson.marshaller());
                                     }))),
