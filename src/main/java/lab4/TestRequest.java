@@ -4,13 +4,13 @@ public class TestRequest {
     private final String packageId;
     private final String jsScript;
     private final String functionName;
-    private final Test[] tests;
+    private final Test test;
 
-    public TestRequest(String packageId, String jsScript, String functionName, Test[] tests) {
+    public TestRequest(String packageId, String jsScript, String functionName, Test test) {
         this.packageId = packageId;
         this.jsScript = jsScript;
         this.functionName = functionName;
-        this.tests = tests;
+        this.test = test;
     }
 
     public String getPackageId() {
@@ -25,7 +25,7 @@ public class TestRequest {
         return functionName;
     }
 
-    public Test[] getTests() {
-        return tests;
+    public Test getTests() {
+        return test;
     }
 }
