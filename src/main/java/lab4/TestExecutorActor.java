@@ -1,6 +1,7 @@
 package lab4;
 
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 
 import javax.script.Invocable;
@@ -9,7 +10,7 @@ import javax.script.ScriptEngineManager;
 
 public class TestExecutorActor extends AbstractActor {
     private final static String ENGINE_NAME = "nashborn";
-    private final 
+    private final ActorRef storageActor;
 
     @Override
     public AbstractActor.Receive createReceive() {
