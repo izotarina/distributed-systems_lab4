@@ -1,9 +1,12 @@
 package lab4;
 
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 
 public class RouterActor extends AbstractActor {
+    private final ActorRef storage;
+    private final ActorRef pool;
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
