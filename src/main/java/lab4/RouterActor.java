@@ -7,6 +7,8 @@ import akka.japi.pf.ReceiveBuilder;
 public class RouterActor extends AbstractActor {
     private final ActorRef storage;
     private final ActorRef pool;
+
+    public RouterActor()
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
