@@ -9,5 +9,11 @@ public class StoreResultTest {
         this.result = result;
     }
 
-    
+    public String getResult() {
+        return result;
+    }
+
+    public Test getTest() {
+        return test;
+    }
 }
