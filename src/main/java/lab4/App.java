@@ -48,12 +48,13 @@ public class App {
     private Route createRoute(ActorRef routerActor) {
         Route router = route(
                 path("result", () ->
-                        route(
-                                get( () -> {
-                                    Future<Object> result = Patterns.ask(GetTestResults,
-                                            StorageActor.makeRequest(), 5000);
-                                    return completeOKWithFuture(result, Jackson.marshaller());
-                                }))),
+                        get(() ->
+                                parameter("key", (key) ->
+                                        parameter("value", (value) ->
+                                        {
+                                            storeActor.tell(new StoreActor.StoreMessage(key, value), ActorRef.noSender());
+                                            return complete("value saved to store ! key=" + key + " value=" + value);
+                                        })))),
                 path("test", () ->
                         route(
                                 post(() ->
