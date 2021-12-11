@@ -49,12 +49,11 @@ public class App {
         Route router = route(
                 path("result", () ->
                         get(() ->
-                                parameter("packageId", (key) ->
-                                        parameter("value", (value) ->
-                                        {
-                                            routerActor.tell(new StoreActor.StoreMessage(key, value), ActorRef.noSender());
-                                            return complete("value saved to store ! key=" + key + " value=" + value);
-                                        })))),
+                                parameter("packageId", (packageId) ->
+                                    {
+                                        routerActor.tell(new StoreActor.StoreMessage(key, value), ActorRef.noSender());
+                                        return complete("value saved to store ! key=" + key + " value=" + value);
+                                    }))),
                 path("test", () ->
                         route(
                                 post(() ->
