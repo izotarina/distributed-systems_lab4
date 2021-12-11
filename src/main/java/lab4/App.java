@@ -46,7 +46,7 @@ public class App {
     }
 
     private Route createRoute(ActorRef routerActor) {
-        Route router = route(
+        return route(
                 path("semaphore", () ->
                         route(
                                 get( () -> {
@@ -68,6 +68,6 @@ public class App {
                                         {
                                             storeActor.tell(new StoreActor.StoreMessage(key, value), ActorRef.noSender());
                                             return complete("value saved to store ! key=" + key + " value=" + value);
-                                        })))),
+                                        })))));
     }
 }
