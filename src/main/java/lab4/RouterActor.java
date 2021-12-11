@@ -1,4 +1,7 @@
 package lab4;
 
-public class RouterActor {
+import akka.actor.AbstractActor;
+
+public class RouterActor extends AbstractActor {
+    
 }
