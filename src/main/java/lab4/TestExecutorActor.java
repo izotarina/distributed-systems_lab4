@@ -9,6 +9,7 @@ import javax.script.ScriptEngineManager;
 
 public class TestExecutorActor extends AbstractActor {
     private final static String ENGINE_NAME = "nashborn";
+    private final 
 
     @Override
     public AbstractActor.Receive createReceive() {
