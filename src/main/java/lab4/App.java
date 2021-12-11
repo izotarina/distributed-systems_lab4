@@ -58,7 +58,7 @@ public class App {
                         route(
                                 post(() ->
                                         entity(Jackson.unmarshaller(InputDataTests.class), msg -> {
-                                            testPackageActor.tell(msg, ActorRef.noSender());
+                                            routerActor.tell(msg, ActorRef.noSender());
                                             return complete("Test started!");
                                         })))));
         return router;
