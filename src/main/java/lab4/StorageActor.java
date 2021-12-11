@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class StorageActor extends AbstractActor {
-    private Map<String, List<TestResult>> store = new HashMap<>();
+    private final Map<String, List<TestResult>> store = new HashMap<>();
 
     @Override
     public Receive createReceive() {
@@ -20,13 +20,13 @@ public class StorageActor extends AbstractActor {
 
                     if (store.containsKey(packageId)) {
                         testResults = store.get(packageId);
-                        testResults.add(m.getTestResult());
 
                     } else {
                         testResults = new ArrayList<>();
-                        testResults.add(m.getTestResult());
                         store.put(m.getPackageId(), testResults);
                     }
+
+                    testResults.add(m.getTestResult());
                 })
                 .match(GetMessage.class, req -> sender().tell(
                         new StoreMessage(req.getKey(), store.get(req.getKey())), self())
