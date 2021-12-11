@@ -26,7 +26,7 @@ public class App {
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         App instance = new App();
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
-                instance.createRoute(system).flow(system, materializer);
+                instance.createRoute(router).flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost("localhost", 8080),
@@ -39,7 +39,7 @@ public class App {
                 .thenAccept(unbound -> system.terminate());
     }
 
-    private RouterActor createRoute() {
+    private RouterActor createRoute(ActorRef router) {
         
     }
 }
