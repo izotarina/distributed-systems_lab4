@@ -14,10 +14,10 @@ import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
+import scala.concurrent.Future;
 
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Future;
 
 import static akka.http.javadsl.server.Directives.*;
 
@@ -52,7 +52,6 @@ public class App {
                                 parameter("packageId", (packageId) ->
                                     {
                                         Future<Object> result = Patterns.ask(routerActor, new GetTestResults(packageId), 5000);
-                                        routerActor.tell(new GetTestResults(packageId), ActorRef.noSender());
                                         return completeOKWithFuture(result, Jackson.marshaller());
                                     }))),
                 path("test", () ->
