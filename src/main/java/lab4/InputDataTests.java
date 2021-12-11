@@ -27,7 +27,7 @@ public class InputDataTests {
         return functionName;
     }
 
-    public Test getTest() {
-        return test;
+    public List<Test> getTests() {
+        return tests;
     }
 }
