@@ -8,7 +8,10 @@ public class RouterActor extends AbstractActor {
     private final ActorRef storage;
     private final ActorRef pool;
 
-    public RouterActor()
+    public RouterActor() {
+
+    }
+    
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
